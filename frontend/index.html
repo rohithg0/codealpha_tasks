@@ -1,0 +1,75 @@
+
+<html>
+<head>
+    <title>Social Media App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+
+    <div>📸 SocialGram</div>
+
+    <div>
+        🏠 Home
+        &nbsp;&nbsp;
+        ❤️ Activity
+        &nbsp;&nbsp;
+      <a href="profile.html">
+    👤 Profile
+</a>
+    </div>
+
+</header>
+<div class="stories">
+
+    <div class="story">👤</div>
+    <div class="story">🔥</div>
+    <div class="story">😎</div>
+    <div class="story">🚀</div>
+    <div class="story">🎮</div>
+    <div class="story">📸</div>
+
+</div>
+<div class="container">
+    <div class="profile-card">
+
+    <img
+        src="https://i.pravatar.cc/150?img=12"
+        alt="profile"
+    >
+
+    <div>
+        <h2>Alex</h2>
+        <p>Web Developer 🚀</p>
+
+        <div class="stats">
+            <span>15 Posts</span>
+            <span>230 Followers</span>
+            <span>180 Following</span>
+        </div>
+    </div>
+
+</div>
+
+    <div class="create-post">
+        <h3>Create Post</h3>
+
+        <textarea
+            id="postContent"
+            placeholder="What's on your mind?"
+        ></textarea>
+
+        <button onclick="createPost()">
+            Post
+        </button>
+    </div>
+
+    <div id="posts"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

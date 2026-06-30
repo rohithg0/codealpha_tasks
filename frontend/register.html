@@ -2,40 +2,57 @@
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
 </head>
+
 <body>
 
-<div class="container">
+<div class="bg-shape shape1"></div>
+<div class="bg-shape shape2"></div>
 
-    <h2>Create Account</h2>
+<div class="login-container">
 
-    <input
-        type="text"
-        id="username"
-        placeholder="Username"
-    >
+    <div class="logo">
+        📸
+        <h1>SocialGram</h1>
+        <p>Create your account</p>
+    </div>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Email"
-    >
+    <div class="login-card">
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Password"
-    >
+        <h2>Join SocialGram 🚀</h2>
 
-    <button onclick="register()">
-        Register
-    </button>
+        <input
+            type="text"
+            id="username"
+            placeholder="Full Name"
+        >
 
-    <p>
-        Already have an account?
-        <a href="login.html">Login</a>
-    </p>
+        <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button onclick="register()">
+            Create Account
+        </button>
+
+        <p class="bottom-text">
+            Already have an account?
+
+            <a href="index.html">
+                Sign In
+            </a>
+        </p>
+
+    </div>
 
 </div>
 

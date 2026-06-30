@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/socialmedia")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
@@ -44,22 +44,38 @@ app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // check user exists
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.send("User not found");
+      return res.json({
+        success: false,
+        message: "User not found"
+      });
     }
 
-    // check password
     if (user.password !== password) {
-      return res.send("Incorrect password");
+      return res.json({
+        success: false,
+        message: "Incorrect password"
+      });
     }
 
-    res.send("Login successful");
+    res.json({
+      success: true,
+      message: "Login successful",
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email
+      }
+    });
 
   } catch (err) {
-    res.send("Error during login");
+    console.log(err);
+    res.json({
+      success: false,
+      message: "Error during login"
+    });
   }
 });
 app.post("/post", async (req, res) => {

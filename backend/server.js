@@ -201,6 +201,21 @@ app.get("/comments/:postId", async (req, res) => {
     res.send(err.message);
   }
 });
+// GET POSTS OF A USER
+app.get("/userposts/:id", async (req, res) => {
+  try {
+    const posts = await Post.find({
+      userId: req.params.id
+    }).populate("userId");
+
+    res.json(posts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: err.message
+    });
+  }
+});
 // START SERVER
 app.listen(5000, () => {
   console.log("Server running on port 5000");

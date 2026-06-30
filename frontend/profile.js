@@ -1,46 +1,59 @@
-const userId = "6a294e168fc45d7e66ef4c01";
+const userId = localStorage.getItem("userId");
 
 async function loadProfile() {
 
-    const res = await fetch(
-        `http://localhost:5000/profile/${userId}`
-    );
-
+    const res = await fetch(`https://codealpha-tasks-apqo.onrender.com/profile/${userId}`);
     const user = await res.json();
 
-    document.getElementById("profile").innerHTML = `
-    
-        <div class="profile-card">
+    document.getElementById("username").innerText = user.username;
+    document.getElementById("email").innerText = user.email;
 
-            <img
-                src="https://i.pravatar.cc/150?img=12"
-            >
+    document.getElementById("followersCount").innerText =
+        user.followers ? user.followers.length : 0;
 
-            <div>
+    document.getElementById("followingCount").innerText =
+        user.following ? user.following.length : 0;
 
-                <h2>${user.username}</h2>
+}
 
-                <p>${user.email}</p>
+async function loadMyPosts() {
 
-                <div class="stats">
+    const res = await fetch(`https://codealpha-tasks-apqo.onrender.com/userposts/${userId}`);
+    const posts = await res.json();
 
-                    <span>
-                        Followers:
-                        ${user.followers.length}
-                    </span>
+    document.getElementById("postsCount").innerText = posts.length;
 
-                    <span>
-                        Following:
-                        ${user.following.length}
-                    </span>
+    let html = "";
 
-                </div>
+    posts.forEach(post => {
 
+        html += `
+        <div class="post">
+
+            <div class="username">
+                👤 ${post.userId.username}
+            </div>
+
+            <div class="content">
+                ${post.content}
+            </div>
+
+            <div class="post-image">
+                <img src="https://picsum.photos/600/300?random=${post._id}">
+            </div>
+
+            <div class="likes">
+                ❤️ ${post.likes.length} Likes
             </div>
 
         </div>
+        `;
 
-    `;
+    });
+
+    document.getElementById("myPosts").innerHTML = html;
+
 }
 
 loadProfile();
+loadMyPosts();

@@ -7,12 +7,63 @@
 <body>
 
 <header>
-    <div>📸 SocialGram</div>
+
+    <h2>👤 My Profile</h2>
+
+    <a href="home.html">🏠 Home</a>
+
 </header>
 
 <div class="container">
 
-    <div id="profile"></div>
+    <div class="profile-card">
+
+        <img
+            src="https://i.pravatar.cc/150?img=12"
+            id="profileImage"
+        >
+
+        <div>
+
+            <h2 id="username">
+                Loading...
+            </h2>
+
+            <p id="email">
+                Loading...
+            </p>
+
+            <div class="stats">
+
+                <span>
+                    📝
+                    <span id="postsCount">0</span>
+                    Posts
+                </span>
+
+                <span>
+                    👥
+                    <span id="followersCount">0</span>
+                    Followers
+                </span>
+
+                <span>
+                    ➡️
+                    <span id="followingCount">0</span>
+                    Following
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h2 style="margin-bottom:20px;">
+        My Posts
+    </h2>
+
+    <div id="myPosts"></div>
 
 </div>
 

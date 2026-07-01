@@ -216,6 +216,18 @@ app.get("/userposts/:id", async (req, res) => {
     });
   }
 });
+// GET ALL USERS
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find().select("-password");
+    res.json(users);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: err.message
+    });
+  }
+});
 // START SERVER
 app.listen(5000, () => {
   console.log("Server running on port 5000");
